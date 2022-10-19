@@ -9,13 +9,13 @@ import java.net.Socket;
 
 public class Server {
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(8083); // порт можете выбрать любой в доступном диапазоне 0-65536. Но чтобы не нарваться на уже занятый - рекомендуем использовать около 8080
-        Socket clientSocket = serverSocket.accept(); // ждем подключения
+        ServerSocket serverSocket = new ServerSocket(8083); // РїРѕСЂС‚ РјРѕР¶РµС‚Рµ РІС‹Р±СЂР°С‚СЊ Р»СЋР±РѕР№ РІ РґРѕСЃС‚СѓРїРЅРѕРј РґРёР°РїР°Р·РѕРЅРµ 0-65536. РќРѕ С‡С‚РѕР±С‹ РЅРµ РЅР°СЂРІР°С‚СЊСЃСЏ РЅР° СѓР¶Рµ Р·Р°РЅСЏС‚С‹Р№ - СЂРµРєРѕРјРµРЅРґСѓРµРј РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РѕРєРѕР»Рѕ 8080
+        Socket clientSocket = serverSocket.accept(); // Р¶РґРµРј РїРѕРґРєР»СЋС‡РµРЅРёСЏ
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
 
-        System.out.println("New connection accepted" + "\n" + "Порт подключения:" + clientSocket.getPort());
+        System.out.println("New connection accepted" + "\n" + "РџРѕСЂС‚ РїРѕРґРєР»СЋС‡РµРЅРёСЏ:" + clientSocket.getPort());
         String name = in.readLine();
         out.println(String.format("Hi %s, your port is %d. Are you child? (yes/no)",
                 name, clientSocket.getPort()));
